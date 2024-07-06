@@ -23,7 +23,7 @@ job_patch_path = r'C:\Program Files\edb\prodmig\PostMigPatches\patch_jobs.sql'
 migrationapp_path = r'C:\Program Files\edb\prodmig\RunCMDEdb_New\netcoreapp3.1\RunEDBCommand.exe'
 audittriggerapp_path = r'C:\Program Files\edb\prodmig\AuditTriggerCMDNew\netcoreapp3.1\TriggerConstraintViewCreationForAuditPostMigration.exe'
 comparetoolapp_path = r'C:\Program Files\edb\prodmig\Ora2PGCompToolKit\Debug\OraPostGreSqlComp.exe'
-version_path = r'C:\Users\sultan.m\Documents\GitHub\FinalMig\version.txt'
+version_path = r'C:\Users\sultan.m\Desktop\MigrationAutomation\version.txt'
 
 def get_latest_release_info(repo):
     api_url = f"https://api.github.com/repos/{repo}/releases/latest"
@@ -42,7 +42,7 @@ def get_latest_release_info(repo):
 def checkForUpdates(log_window):
     log_window.append('Checking for updates...')
     try:
-        repo = "i-am-sultan/FinalMig"
+        repo = "i-am-sultan/MigrationAutomation"
         latest_release = get_latest_release_info(repo)
 
         if latest_release:
