@@ -285,7 +285,7 @@ def createJobs(schema_name, pgHost, pgUserName, pgPort, pgPass, pgDbname, job_pa
             f1.write(content)
 
         # Connect to the PostgreSQL database and execute the patched SQL
-        connection = psycopg2.connect(database=pgDbname, user=pgUserName, password=pgPass, host=pgHost, port=pgPort)
+        connection = psycopg2.connect(database='postgres', user=pgUserName, password=pgPass, host=pgHost, port=pgPort)
         cursor = connection.cursor()
         cursor.execute(content)
         connection.commit()
