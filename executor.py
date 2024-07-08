@@ -388,9 +388,11 @@ def run_external_app(app_path):
 
 
 # Entry point for the application
+import socket
 if __name__ == '__main__':
     excel_filepath = r'C:\Users\sultan.m\Desktop\MigrationAutomation\PG Automation.xlsx'
-    credentials = load_credentials_from_excel(excel_filepath,'Remote Host1')
+    hostname = socket.gethostname()
+    credentials = load_credentials_from_excel(excel_filepath,hostname)
     update_connections(credentials)
     app_paths = [migrationapp_path,audittriggerapp_path,comparetoolapp_path]
     for app in app_paths:
