@@ -1,4 +1,0 @@
-1. create a excel sheet with all the necessary credentials to connect the remote machines and databases
-2. create a drop down menu to connect multiple remote machines using SSH connections
-3. create a new file with the existing python gui application for execution without human intervention
-4. leverage the power of shared drive to store the log files
