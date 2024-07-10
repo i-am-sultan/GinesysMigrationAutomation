@@ -300,10 +300,12 @@ def load_credentials_from_excel(excel_filepath,remotehost):
     credentials = {}
     try:
         df = pd.read_excel(excel_filepath)
-        row = df[df['Remote Host'] == remotehost]
+        row = df[df['Hostname'] == remotehost]
         if not row.empty:
             # Extract Oracle credentials
             credentials['oraSchema'] = row['OraSchema'].values[0]
+            print(credentials)
+
             credentials['oraHost'] = row['OraHost'].values[0]
             credentials['oraPort'] = row['OraPort'].values[0]
             credentials['oraPass'] = row['OraPass'].values[0]
@@ -332,6 +334,7 @@ def update_connections(credentials):
                       credentials['pgHost'], credentials['pgPort'], credentials['pgUser'], credentials['pgPass'], credentials['pgDbName'], toolkit_path)
         updateConnectionJson(credentials['oraSchema'], credentials['oraHost'], credentials['oraPort'], credentials['oraPass'], credentials['oraService'],
                              credentials['pgHost'], credentials['pgPort'], credentials['pgUser'], credentials['pgPass'], credentials['pgDbName'], connection_json_path)
+
 
         # Copy the files to the destination directory
         success = copyFiles(audit_path)
@@ -389,13 +392,15 @@ def run_external_app(app_path):
 # Entry point for the application
 import socket
 if __name__ == '__main__':
-    excel_filepath = r'C:\Users\sultan.m\Desktop\MigrationAutomation\PG Automation.xlsx'
+    excel_filepath = r'C:\Users\sultan.m\Desktop\MigrationAutomation\app\scripts\PG Automation.xlsx'
     hostname = socket.gethostname()
     credentials = load_credentials_from_excel(excel_filepath,hostname)
+    print(credentials)
     update_connections(credentials)
     app_paths = [migrationapp_path,audittriggerapp_path,comparetoolapp_path]
     for app in app_paths:
         run_external_app(app)
+    print(credentials['pgDbName'])
     updatePatchDrill(credentials['pgDbName'],patch_drill_path)
     updatePatchLive(credentials['pgDbName'],patch_live_path)
     executePatch(
@@ -405,6 +410,7 @@ if __name__ == '__main__':
         credentials['pgPass'],
         credentials['pgDbName'],
         patch_drill_path)
+
     createJobs(
         credentials['oraSchema'],
         credentials['pgHost'],

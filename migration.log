@@ -1,0 +1,65 @@
+2024-07-09 18:31:50,434 - INFO - 
+Error loading credentials from the excel file: [Errno 2] No such file or directory: 'C:\\Users\\sultan.m\\Desktop\\MigrationAutomation\\PG Automation.xlsx'
+2024-07-09 18:31:50,434 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:31:51,300 - INFO - Stdout from C:\Program Files\edb\prodmig\RunCMDEdb_New\netcoreapp3.1\RunEDBCommand.exe:
+2024-07-09 18:31:51,300 - INFO - EDB Tooklit Migration Process:
+------------------------------
+1. Full Migration(ORA To PG).
+2. Data Migration(EDB Toolkit Process).
+3. Partial Table Migration.
+4. Run Post Migration Script.
+5. PG To PG Migration.
+Choose any one option from 1, 2, 3, 4 or 5
+Object reference not set to an instance of an object.
+
+Please type END for exit
+
+2024-07-09 18:31:51,301 - INFO - C:\Program Files\edb\prodmig\RunCMDEdb_New\netcoreapp3.1\RunEDBCommand.exe executed successfully.
+2024-07-09 18:31:52,032 - ERROR - Stderr from C:\Program Files\edb\prodmig\AuditTriggerCMDNew\netcoreapp3.1\TriggerConstraintViewCreationForAuditPostMigration.exe:
+2024-07-09 18:31:52,032 - ERROR - Unhandled exception. System.TypeInitializationException: The type initializer for 'TriggerConstraintViewCreationForAuditPostMigration.Program' threw an exception.
+ ---> System.UnauthorizedAccessException: Access to the path 'C:\Program Files\edb\prodmig\AuditTriggerCMDNew\netcoreapp3.1\LogForTriggerViewConstraintCreationForAudit.log' is denied.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter.ValidateArgsAndOpenPath(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendAllText(String path, String contents)
+   at TriggerConstraintViewCreationForAuditPostMigration.Program.Log(String message, String filePath) in D:\GINESYS\V12\WinApps\GinesysERP\IF_PostGres\Source\Utilities\PostgresDataMigrationTools\EnableAuditMigration\Program.cs:line 953
+   at TriggerConstraintViewCreationForAuditPostMigration.Program.ReadOraCon() in D:\GINESYS\V12\WinApps\GinesysERP\IF_PostGres\Source\Utilities\PostgresDataMigrationTools\EnableAuditMigration\Program.cs:line 129
+   at TriggerConstraintViewCreationForAuditPostMigration.Program..cctor() in D:\GINESYS\V12\WinApps\GinesysERP\IF_PostGres\Source\Utilities\PostgresDataMigrationTools\EnableAuditMigration\Program.cs:line 24
+   --- End of inner exception stack trace ---
+   at TriggerConstraintViewCreationForAuditPostMigration.Program.Main(String[] args) in D:\GINESYS\V12\WinApps\GinesysERP\IF_PostGres\Source\Utilities\PostgresDataMigrationTools\EnableAuditMigration\Program.cs:line 31
+
+2024-07-09 18:31:57,520 - INFO - C:\Program Files\edb\prodmig\Ora2PGCompToolKit\Debug\OraPostGreSqlComp.exe executed successfully.
+2024-07-09 18:33:56,372 - INFO - 
+Error loading credentials from the excel file: [Errno 2] No such file or directory: 'C:\\Users\\sultan.m\\Desktop\\MigrationAutomation\\PG Automation.xlsx'
+2024-07-09 18:33:56,372 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:34:12,862 - INFO - 
+Error loading credentials from the excel file: [Errno 2] No such file or directory: 'C:\\Users\\sultan.m\\Desktop\\MigrationAutomation\\PG Automation.xlsx'
+2024-07-09 18:34:12,862 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:34:41,879 - INFO - 
+Error loading credentials from the excel file: [Errno 2] No such file or directory: 'C:\\Users\\sultan.m\\Desktop\\MigrationAutomation\\PG Automation.xlsx'
+2024-07-09 18:34:41,880 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:35:28,645 - INFO - 
+Error loading credentials from the excel file: 'Remote Host'
+2024-07-09 18:35:28,646 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:37:43,445 - INFO - 
+Error loading credentials from the excel file: 'Remote Host'
+2024-07-09 18:37:43,446 - INFO - An error occurred: 'oraSchema'
+2024-07-09 18:50:40,041 - INFO - Credentials successfully loaded from file C:\Users\sultan.m\Desktop\MigrationAutomation\app\scripts\PG Automation.xlsx 
+{'oraSchema': 'KTPL', 'oraHost': '10.0.0.0', 'oraPort': 1521, 'oraPass': 'abcd', 'oraService': 'GINESYS', 'pgDbName': 'PG-PROD', 'pgHost': '170.0.0.5', 'pgPort': 5432, 'pgPass': 'abcd', 'pgUser': 'gslpgadmin'}
+2024-07-09 18:50:40,042 - INFO - OraCon updated successfully...
+2024-07-09 18:50:40,043 - INFO - pgCon updated successfully... 
+2024-07-09 18:50:40,043 - INFO - toolkit.properties updated successfully...
+2024-07-09 18:50:40,044 - INFO - Please check the credentials of toolkit.properties in below logwindow before proceed...
+SRC_DB_URL=jdbc:oracle:thin:@10.0.0.0:1521:GINESYS
+SRC_DB_USER=KTPL
+SRC_DB_PASSWORD=abcd
+
+TARGET_DB_URL=jdbc:postgresql://170.0.0.5:5432/PG-PROD
+TARGET_DB_USER=gslpgadmin
+TARGET_DB_PASSWORD=abcd
+
+2024-07-09 18:50:40,052 - INFO - connection.json updated successfully...
+2024-07-09 18:50:40,075 - INFO - OraCon.txt and pgCon.txt copied and pasted successfully...
+2024-07-09 18:50:40,075 - INFO - Connections updated and files copied successfully.

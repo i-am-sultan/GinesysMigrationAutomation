@@ -2,8 +2,6 @@ import sys
 import pandas as pd
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView
 import paramiko
-import wmi
-import winrm
 
 class MigrationApp(QWidget):
     def __init__(self, excel_file):
@@ -48,47 +46,31 @@ class MigrationApp(QWidget):
         hostname = self.table.item(row, 0).text()
         username = self.table.item(row, 1).text()
         password = self.table.item(row, 2).text()
-        migration_script_path = r'C:\Users\sultan.m.GSL\Downloads\Checj\migration_script.sh'
+        migration_script_path = r'C:\\Users\\sultan.m\\Desktop\\MigrationAutomation\\app\\scripts\\executor.py'
 
         try:
-            '''
             # Establish SSH connection
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh.connect(hostname, username=username, password=password)
-            '''
-            '''
-            sconnection = wmi.WMI(hostname, user=username, password=password)
-            print("Connected to", hostname)
-            # Example: Get the OS caption of the remote machine
-            for os in connection.Win32_OperatingSystem():
-                print(os.caption)
-            '''
-            session = winrm.Session(f'http://{hostname}:5985/wsman', auth=(username, password))
+            print('connected...')
 
             # Execute the migration script
-            ps_script = f'& "{migration_script_path}"'
-            result = session.run_ps(ps_script)
-            if result.status_code != 0:
-                raise Exception(result.std_err.decode())
-
-            output = result.std_out.decode()
-            '''
-            # Execute the migration script
-            stdin, stdout, stderr = ssh.exec_command(f'bash {migration_script_path}')
+            exec_command = f'python {migration_script_path}'
+            stdin, stdout, stderr = ssh.exec_command(exec_command)
             output = stdout.read().decode()
             error = stderr.read().decode()
-            ssh.close()
             if error:
                 raise Exception(error)
-            '''
+            
+            ssh.close()
             QMessageBox.information(self, 'Success', f'Connected to {hostname} and executed the script successfully.\nOutput:\n{output}')
         except Exception as e:
             QMessageBox.critical(self, 'Error', f'Failed to connect to {hostname}.\nError: {str(e)}')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    excel_file = r'C:\Users\sultan.m\Desktop\MigrationAutomation\PG Automation.xlsx'  # Path to your Excel file
+    excel_file = r'C:\Users\sultan.m\Desktop\MigrationAutomation\app\scripts\PG Automation.xlsx'  # Path to your Excel file
     ex = MigrationApp(excel_file)
     ex.show()
     sys.exit(app.exec_())
